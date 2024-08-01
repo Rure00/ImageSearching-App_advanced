@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_cart"
+        android:icon="@drawable/search_tab_img"
+        android:enabled="true"
+        android:title="@string/searching_tab_name" />
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/archive_tab_img"
+        android:enabled="true"
+        android:title="@string/archive_tab_name"
+        />
+</menu>
