@@ -34,6 +34,8 @@ android {
             "KAKAO_REST_KEY",
             properties.getProperty("kakao_rest_key")
         )
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

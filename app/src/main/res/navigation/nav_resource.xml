@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_resource"
-    app:startDestination="@id/searchImageFragment">
+    app:startDestination="@id/searchImageFragment"
+    >
 
     <fragment
         android:id="@+id/searchImageFragment"
@@ -13,6 +14,7 @@
 
         <action
             android:id="@+id/action_searchImageFragment_to_myArchiveFragment"
+            app:popUpTo="@id/searchImageFragment"
             app:destination="@id/myArchiveFragment"
             />
     </fragment>
@@ -23,10 +25,6 @@
         android:label="fragment_my_archive"
         tools:layout="@layout/fragment_my_archive" >
 
-        <action
-            android:id="@+id/action_myArchiveFragment_to_searchImageFragment"
-            app:destination="@id/searchImageFragment"
-            />
     </fragment>
 
 
