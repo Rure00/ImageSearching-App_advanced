@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId = "com.project.imagesearchingadvancedapplication"
-        minSdk = 32
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -76,4 +76,6 @@ dependencies {
     implementation(libs.converter.gson)
     testImplementation(libs.kotlinx.coroutines.test)
     implementation(libs.glide)
+
+    implementation(libs.androidx.navigation.ui.ktx.v240)
 }

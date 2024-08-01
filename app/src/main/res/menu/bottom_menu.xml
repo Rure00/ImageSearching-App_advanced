@@ -12,4 +12,10 @@
         android:enabled="true"
         android:title="@string/archive_tab_name"
         />
+    <item
+        android:id="@+id/navigation_home_2"
+        android:icon="@drawable/archive_tab_img"
+        android:enabled="true"
+        android:title="테스트2"
+        />
 </menu>

@@ -9,8 +9,8 @@
     <fragment
         android:id="@+id/searchImageFragment"
         android:name="com.project.imagesearchingadvancedapplication.fragment.SearchingFragment"
-        android:label="fragment_my_page"
-        tools:layout="@layout/fragment_my_archive" >
+        android:label="fragment_image_search"
+        tools:layout="@layout/fragment_searching" >
 
         <action
             android:id="@+id/action_searchImageFragment_to_myArchiveFragment"
