@@ -16,6 +16,7 @@ import com.project.imagesearchingadvancedapplication.databinding.ActivityMainBin
 import com.project.imagesearchingadvancedapplication.fragment.MyArchiveFragment
 import com.project.imagesearchingadvancedapplication.fragment.SearchingFragment
 import com.project.imagesearchingadvancedapplication.viewmodel.MainViewModel
+import com.project.imagesearchingadvancedapplication.viewmodel.factory.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         hostFragment.navController
     }
     private val viewModel: MainViewModel by viewModels {
-
+        MainViewModelFactory()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

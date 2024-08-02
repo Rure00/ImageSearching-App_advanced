@@ -78,4 +78,6 @@ dependencies {
     implementation(libs.glide)
 
     implementation(libs.androidx.navigation.ui.ktx.v240)
+
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 }

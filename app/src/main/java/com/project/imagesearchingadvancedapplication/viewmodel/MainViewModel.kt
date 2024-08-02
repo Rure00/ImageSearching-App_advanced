@@ -1,15 +1,17 @@
 package com.project.imagesearchingadvancedapplication.viewmodel
 
 import android.app.Activity
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.project.imagesearchingadvancedapplication.viewmodel.model.SharedPreferenceUtils
+import com.project.imagesearchingadvancedapplication.data.ImageData
 import com.project.imagesearchingadvancedapplication.viewmodel.model.api.RetrofitController
-import kotlinx.coroutines.launch
 
-class MainViewModel(val number: Int): ViewModel() {
+
+class MainViewModel(): ViewModel() {
     //https://stackoverflow.com/questions/67810019/difference-between-by-viewmodels-and-viewmodel-creation-using-factory
     private val retrofitController = RetrofitController()
+
+    val likedImagesLiveData = MutableLiveData(mutableListOf<ImageData>())
 
     fun getImages(query: String) {
 
