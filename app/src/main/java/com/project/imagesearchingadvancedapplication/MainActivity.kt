@@ -3,6 +3,7 @@ package com.project.imagesearchingadvancedapplication
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -13,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.project.imagesearchingadvancedapplication.databinding.ActivityMainBinding
 import com.project.imagesearchingadvancedapplication.fragment.MyArchiveFragment
 import com.project.imagesearchingadvancedapplication.fragment.SearchingFragment
+import com.project.imagesearchingadvancedapplication.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val hostFragment =  supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         hostFragment.navController
     }
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

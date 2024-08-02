@@ -16,12 +16,8 @@ import com.project.imagesearchingadvancedapplication.MainActivity
 import com.project.imagesearchingadvancedapplication.data.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.FragmentSearchingBinding
 import com.project.imagesearchingadvancedapplication.viewmodel.model.SharedPreferenceUtils
-import com.project.imagesearchingapp.model.api.RetrofitController
+import com.project.imagesearchingadvancedapplication.viewmodel.model.api.RetrofitController
 import com.project.imagesearchingadvancedapplication.recycler_view.ImageRvAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SearchingFragment : Fragment() {
     private var _binding: FragmentSearchingBinding? = null

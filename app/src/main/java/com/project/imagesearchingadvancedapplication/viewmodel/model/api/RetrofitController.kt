@@ -1,7 +1,7 @@
-package com.project.imagesearchingapp.model.api
+package com.project.imagesearchingadvancedapplication.viewmodel.model.api
 
 import com.project.imagesearchingadvancedapplication.data.ImageData
-import com.project.imagesearchingadvancedapplication.viewmodel.model.api.RetrofitClient
+import com.project.imagesearchingapp.model.api.RetrofitService
 
 
 class RetrofitController {
