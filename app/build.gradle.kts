@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId = "com.project.imagesearchingadvancedapplication"
-        minSdk = 32
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -34,6 +34,8 @@ android {
             "KAKAO_REST_KEY",
             properties.getProperty("kakao_rest_key")
         )
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -64,6 +66,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,4 +76,6 @@ dependencies {
     implementation(libs.converter.gson)
     testImplementation(libs.kotlinx.coroutines.test)
     implementation(libs.glide)
+
+    implementation(libs.androidx.navigation.ui.ktx.v240)
 }

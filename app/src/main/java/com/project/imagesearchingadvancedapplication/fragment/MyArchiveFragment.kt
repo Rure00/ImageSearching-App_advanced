@@ -42,23 +42,23 @@ class MyArchiveFragment : Fragment() {
 //        }
 
         binding.archiveRecyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            adapter = imageRvAdapter
-            addItemDecoration(object: ItemDecoration() {
-                val px = 10
-                val spanCount = 2
-
-                override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                    val index = parent.getChildLayoutPosition(view)
-                    val isLeft = (index % spanCount == 0)
-                    outRect.set(
-                        if (isLeft) px else px/2,
-                        0,
-                        if (isLeft) px/2 else px,
-                        px
-                    )
-                }
-            })
+//            layoutManager = GridLayoutManager(context, 2)
+//            adapter = imageRvAdapter
+//            addItemDecoration(object: ItemDecoration() {
+//                val px = 10
+//                val spanCount = 2
+//
+//                override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+//                    val index = parent.getChildLayoutPosition(view)
+//                    val isLeft = (index % spanCount == 0)
+//                    outRect.set(
+//                        if (isLeft) px else px/2,
+//                        0,
+//                        if (isLeft) px/2 else px,
+//                        px
+//                    )
+//                }
+//            })
         }
     }
 }

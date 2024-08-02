@@ -106,15 +106,15 @@ class SearchingFragment : Fragment() {
 
 
     private fun startSearch(query: String) {
-        preferencesUtils.saveQuery(query)
-        CoroutineScope(Dispatchers.IO).launch {
-            val result = retrofitController.getImages(query)
-            imageList.clear()
-            imageList.addAll(result)
-
-            withContext(Dispatchers.Main) {
-                imageRvAdapter.notifyItemRangeInserted(0, result.size)
-            }
-        }
+//        preferencesUtils.saveQuery(query)
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val result = retrofitController.getImages(query)
+//            imageList.clear()
+//            imageList.addAll(result)
+//
+//            withContext(Dispatchers.Main) {
+//                imageRvAdapter.notifyItemRangeInserted(0, result.size)
+//            }
+//        }
     }
 }
