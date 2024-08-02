@@ -1,6 +1,6 @@
 package com.project.imagesearchingapp.model.api
 
-import com.project.imagesearchingadvancedapplication.model.api.ImageSearchResponse
+import com.project.imagesearchingadvancedapplication.viewmodel.model.api.ImageSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

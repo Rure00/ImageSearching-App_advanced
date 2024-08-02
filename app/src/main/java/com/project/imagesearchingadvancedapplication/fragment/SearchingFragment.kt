@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.project.imagesearchingadvancedapplication.MainActivity
 import com.project.imagesearchingadvancedapplication.data.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.FragmentSearchingBinding
-import com.project.imagesearchingadvancedapplication.model.SharedPreferenceUtils
+import com.project.imagesearchingadvancedapplication.viewmodel.model.SharedPreferenceUtils
 import com.project.imagesearchingapp.model.api.RetrofitController
 import com.project.imagesearchingadvancedapplication.recycler_view.ImageRvAdapter
 import kotlinx.coroutines.CoroutineScope

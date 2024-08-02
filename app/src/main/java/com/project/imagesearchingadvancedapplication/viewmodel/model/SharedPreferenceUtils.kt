@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.model
+package com.project.imagesearchingadvancedapplication.viewmodel.model
 
 import android.app.Activity
 import android.content.SharedPreferences
