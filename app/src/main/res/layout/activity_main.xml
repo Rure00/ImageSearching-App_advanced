@@ -29,12 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:itemPaddingTop="10dp"
-        app:itemPaddingBottom="10dp"
         android:background="@drawable/bottom_navigation_background"
-
-
-
         app:itemIconTint="@drawable/menu_selector_color"
         app:itemTextColor="@drawable/menu_selector_color"
         app:itemIconSize="24dp"

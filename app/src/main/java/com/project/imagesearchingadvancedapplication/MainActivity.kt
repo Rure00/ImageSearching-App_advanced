@@ -26,10 +26,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+        ViewCompat.setOnApplyWindowInsetsListener(binding.bnMenu) { v, insets ->
+            v.setPadding(10, 0, 0, 10)
             insets
         }
 
@@ -40,22 +44,32 @@ class MainActivity : AppCompatActivity() {
         with(binding.bnMenu) {
             setupWithNavController(navController)
             setOnItemSelectedListener { item ->
-                val currentFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container)
+                val currentFragment = supportFragmentManager
+                    .findFragmentById(R.id.nav_host_fragment_container)!!
+                    .childFragmentManager
+                    .fragments[0]
+
+                //Log.d("Navigation", "Cur fragment: ${currentFragment?.javaClass?.name}")
                 when(item.itemId) {
-                    R.id.searchImageFragment -> {
+                    R.id.navigation_search_img -> {
+                        Log.d("Navigation", "Tab Search Image")
                         if(currentFragment !is SearchingFragment) {
                             navController.popBackStack(R.id.searchImageFragment, false)
                         }
                         true
                     }
-                    R.id.myArchiveFragment -> {
+                    R.id.navigation_my_archive -> {
+                        Log.d("Navigation", "Tab My Archive")
                         if(currentFragment !is MyArchiveFragment) {
                             Log.d("Navigation", "From Search to MyArchive")
                             navController.navigate(R.id.action_searchImageFragment_to_myArchiveFragment)
                         }
                         true
                     }
-                    else -> return@setOnItemSelectedListener false
+                    else -> {
+                        Log.i("Navigation", "wtf")
+                        return@setOnItemSelectedListener false
+                    }
                 }
 
             }
