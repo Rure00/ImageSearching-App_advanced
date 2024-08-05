@@ -1,7 +1,6 @@
-package com.project.imagesearchingapp.model.api
+package com.project.imagesearchingadvancedapplication.viewmodel.model.api
 
 import com.project.imagesearchingadvancedapplication.data.ImageData
-import com.project.imagesearchingadvancedapplication.model.api.RetrofitClient
 
 
 class RetrofitController {
@@ -15,4 +14,13 @@ class RetrofitController {
                 time = it.datetime
             )
         }
+
+    suspend fun getVideos(query: String): List<ImageData>
+            = client.getVideos(query).documents.map {
+        ImageData(
+            imageUrl = it.thumbnail,
+            from = "[${it.author}] ${it.title}",
+            time = it.datetime
+        )
+    }
 }
