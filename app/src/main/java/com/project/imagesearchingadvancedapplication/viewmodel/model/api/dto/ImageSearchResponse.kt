@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.viewmodel.model.api
+package com.project.imagesearchingadvancedapplication.viewmodel.model.api.dto
 
 data class ImageSearchResponse(
     val meta: Meta,
