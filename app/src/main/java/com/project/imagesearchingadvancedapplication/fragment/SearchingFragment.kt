@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.project.imagesearchingadvancedapplication.MainActivity
 import com.project.imagesearchingadvancedapplication.add
@@ -69,7 +70,7 @@ class SearchingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.imageRecyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = GridLayoutManager(context, 2) //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = imageRvAdapter
             addItemDecoration(object: ItemDecoration() {
                 val px = 10

@@ -1,17 +1,21 @@
 package com.project.imagesearchingadvancedapplication.recycler_view
 
-import android.util.Log
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.project.imagesearchingadvancedapplication.R
-import com.project.imagesearchingadvancedapplication.databinding.ImageRecyclerItemBinding
 import com.project.imagesearchingadvancedapplication.data.ImageData
+import com.project.imagesearchingadvancedapplication.databinding.ImageRecyclerItemBinding
+
 
 class ImageRvAdapter(private val clickListener: ClickListener): ListAdapter<ImageData, ImageRvAdapter.ImageViewHolder>(
     object: DiffUtil.ItemCallback<ImageData>() {
@@ -29,7 +33,7 @@ class ImageRvAdapter(private val clickListener: ClickListener): ListAdapter<Imag
 
     inner class ImageViewHolder(private val binding: ImageRecyclerItemBinding): ViewHolder(binding.root) {
         fun bind(item: ImageData) {
-            Glide.with(binding.root)
+            GlideApp.with(binding.root)
                 .load(item.imageUrl)
                 .into(binding.image)
             with(binding) {

@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 
     id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 android {
@@ -76,6 +77,8 @@ dependencies {
     implementation(libs.converter.gson)
     testImplementation(libs.kotlinx.coroutines.test)
     implementation(libs.glide)
+    kapt("com.github.bumptech.glide:compiler:4.14.2")
+
 
     implementation(libs.androidx.navigation.ui.ktx.v240)
 
