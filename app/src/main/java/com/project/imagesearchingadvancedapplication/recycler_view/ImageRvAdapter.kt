@@ -32,6 +32,7 @@ class ImageRvAdapter(private val clickListener: ClickListener): ListAdapter<Imag
 ) {
 
     inner class ImageViewHolder(private val binding: ImageRecyclerItemBinding): ViewHolder(binding.root) {
+        //TODO: 좋아요 표시 사라짐 해결하기
         fun bind(item: ImageData) {
             GlideApp.with(binding.root)
                 .load(item.imageUrl)
