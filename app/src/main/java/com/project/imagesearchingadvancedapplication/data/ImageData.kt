@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class ImageData(
     val imageUrl: String,
     val from: String,
-    val time: String
+    val time: String,
+    var isLiked: Boolean = false
 ): Parcelable

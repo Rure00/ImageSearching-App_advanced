@@ -1,8 +1,11 @@
 package com.project.imagesearchingadvancedapplication.recycler_view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
@@ -10,9 +13,19 @@ import com.project.imagesearchingadvancedapplication.R
 import com.project.imagesearchingadvancedapplication.databinding.ImageRecyclerItemBinding
 import com.project.imagesearchingadvancedapplication.data.ImageData
 
-class ImageRvAdapter(private val itemList: List<ImageData>,
-                     private val showHeart: Boolean,
-                     private val onClick: (ImageData) -> Unit): RecyclerView.Adapter<ImageRvAdapter.ImageViewHolder>() {
+class ImageRvAdapter(private val clickListener: ClickListener): ListAdapter<ImageData, ImageRvAdapter.ImageViewHolder>(
+    object: DiffUtil.ItemCallback<ImageData>() {
+        override fun areItemsTheSame(oldItem: ImageData, newItem: ImageData): Boolean {
+            //Log.d("DiffUtil", "old: ${oldItem.imageUrl}, new: ${newItem.imageUrl}}")
+            return oldItem.imageUrl == newItem.imageUrl
+        }
+        override fun areContentsTheSame(oldItem: ImageData, newItem: ImageData): Boolean {
+            //Log.d("DiffUtil", "old is same with new: ${oldItem == newItem}")
+            return oldItem == newItem
+        }
+
+    }
+) {
 
     inner class ImageViewHolder(private val binding: ImageRecyclerItemBinding): ViewHolder(binding.root) {
         fun bind(item: ImageData) {
@@ -22,13 +35,13 @@ class ImageRvAdapter(private val itemList: List<ImageData>,
             with(binding) {
                 fromText.text = item.from
                 timeText.text = item.time
-                favorite.visibility = if(showHeart) View.VISIBLE
+                favorite.visibility = if(item.isLiked) View.VISIBLE
                                     else View.INVISIBLE
 
                 root.setOnClickListener {
-                    favorite.visibility = if(favorite.visibility == View.VISIBLE) View.INVISIBLE
-                                        else View.VISIBLE
-                    onClick(item)
+                    clickListener.onImageClick(item)
+                    favorite.visibility = if(item.isLiked) View.VISIBLE
+                                        else View.INVISIBLE
                 }
             }
         }
@@ -39,9 +52,11 @@ class ImageRvAdapter(private val itemList: List<ImageData>,
         return ImageViewHolder(ImageRecyclerItemBinding.bind(view))
     }
 
-    override fun getItemCount(): Int = itemList.size
-
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        holder.bind(itemList[position])
+        holder.bind(getItem(position))
+    }
+
+    interface ClickListener {
+        fun onImageClick(imageData: ImageData)
     }
 }

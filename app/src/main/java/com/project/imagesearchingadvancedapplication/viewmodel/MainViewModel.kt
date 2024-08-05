@@ -3,6 +3,8 @@ package com.project.imagesearchingadvancedapplication.viewmodel
 import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.CreationExtras
 import com.project.imagesearchingadvancedapplication.data.ImageData
 import com.project.imagesearchingadvancedapplication.viewmodel.model.api.RetrofitController
 
@@ -13,16 +15,16 @@ class MainViewModel(): ViewModel() {
 
     val likedImagesLiveData = MutableLiveData(mutableListOf<ImageData>())
 
-    fun getImages(query: String) {
+    suspend fun getImages(query: String): List<ImageData>
+        = retrofitController.getImages(query)
 
-    }
     fun getVideo(query: String) {
 
     }
-    fun getLastQuery(activity: Activity) {
-
+    fun getLastQuery(activity: Activity): String {
+        return ""
     }
-    fun saveLastQuery(activity: Activity) {
+    fun saveLastQuery(activity: Activity, query: String) {
 
     }
 }
