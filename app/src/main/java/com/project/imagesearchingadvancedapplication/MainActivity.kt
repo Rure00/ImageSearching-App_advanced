@@ -17,6 +17,7 @@ import com.project.imagesearchingadvancedapplication.fragment.MyArchiveFragment
 import com.project.imagesearchingadvancedapplication.fragment.SearchingFragment
 import com.project.imagesearchingadvancedapplication.viewmodel.MainViewModel
 import com.project.imagesearchingadvancedapplication.viewmodel.factory.MainViewModelFactory
+import kotlinx.coroutines.flow.forEach
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -56,19 +57,20 @@ class MainActivity : AppCompatActivity() {
                     .childFragmentManager
                     .fragments[0]
 
-                //Log.d("Navigation", "Cur fragment: ${currentFragment?.javaClass?.name}")
+                Log.d("Navigation", "backStack: ${navController.currentBackStack.value.size}")
+
+
                 when(item.itemId) {
                     R.id.navigation_search_img -> {
-                        Log.d("Navigation", "Tab Search Image")
                         if(currentFragment !is SearchingFragment) {
-                            navController.popBackStack(R.id.searchImageFragment, false)
+                            Log.d("Navigation", "to Search")
+                            navController.popBackStack()
                         }
                         true
                     }
                     R.id.navigation_my_archive -> {
-                        Log.d("Navigation", "Tab My Archive")
                         if(currentFragment !is MyArchiveFragment) {
-                            Log.d("Navigation", "From Search to MyArchive")
+                            Log.d("Navigation", "to MyArchive")
                             navController.navigate(R.id.action_searchImageFragment_to_myArchiveFragment)
                         }
                         true

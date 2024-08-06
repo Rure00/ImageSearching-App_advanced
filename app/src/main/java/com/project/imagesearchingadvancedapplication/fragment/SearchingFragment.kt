@@ -45,14 +45,14 @@ class SearchingFragment : Fragment() {
     private val imageList = mutableListOf<ImageData>()
     private val imageRvAdapter = ImageRvAdapter(object: ImageRvAdapter.ClickListener {
         override fun onImageClick(imageData: ImageData) {
-            if(viewModel.likedImagesLiveData.value!!.contains(imageData)) {
-                imageData.isLiked = false
+            if(imageData.isLiked) {
                 viewModel.likedImagesLiveData.remove(imageData)
             } else {
-                imageData.isLiked = true
                 viewModel.likedImagesLiveData.add(imageData)
             }
+            imageData.isLiked = !imageData.isLiked
 
+            Log.d("SearchingFragment", "On Touch: image size: ${imageList.filter { it.isLiked }.size}")
             Log.d("Like", "insert size: ${viewModel.likedImagesLiveData.value!!.size}")
         }
     })
@@ -63,11 +63,32 @@ class SearchingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchingBinding.inflate(inflater, container, false)
+        Log.d("SearchingFragment", "onCreateView")
+
+
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("SearchingFragment", "Resume: image size: ${imageRvAdapter.currentList.filter { it.isLiked }.size}")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("SearchingFragment", "Pause: image size: ${imageRvAdapter.currentList.filter { it.isLiked }.size}")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("SearchingFragment", "OnStop: image size: ${imageRvAdapter.currentList.filter { it.isLiked }.size}")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Log.d("SearchingFragment", "OnViewCreated: image size: ${imageRvAdapter.currentList.filter { it.isLiked }.size}")
+
 
         binding.imageRecyclerView.apply {
             layoutManager = GridLayoutManager(context, 2) //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -90,13 +111,12 @@ class SearchingFragment : Fragment() {
         }
 
         viewModel.likedImagesLiveData.observe(viewLifecycleOwner) {
-            //imageRvAdapter.submitList(viewModel.likedImagesLiveData.value?.toList())
             Log.d("SearchFragment", "LiveData is changed: ${viewModel.likedImagesLiveData.value!!.size}")
         }
 
         val lastQuery = viewModel.getLastQuery(requireActivity())
         binding.searchEditText.setText(lastQuery)
-        if (lastQuery.isNotBlank()) startSearch(lastQuery)
+        if (lastQuery.isNotBlank() && imageList.isEmpty()) startSearch(lastQuery)
 
 
         binding.searchEditText.setOnKeyListener { _, keyCode, event ->
@@ -123,6 +143,8 @@ class SearchingFragment : Fragment() {
 
     private fun startSearch(query: String) {
         viewModel.saveLastQuery(requireActivity(), query)
+
+        Log.d("searchingFragment", "search. exist: ${imageList.size}")
 
         CoroutineScope(Dispatchers.IO).launch {
             val result = viewModel.getImages(query)
