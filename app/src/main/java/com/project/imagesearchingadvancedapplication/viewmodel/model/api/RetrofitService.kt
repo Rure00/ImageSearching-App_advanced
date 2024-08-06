@@ -17,7 +17,7 @@ interface RetrofitService {
     @GET("search/vclip")
     suspend fun getVideos(
         @Query("query") query: String,
-        @Query("size") size: Int = 80,
+        @Query("size") size: Int = 15,
         @Query("page") page: Int = 1
     ): VideoSearchResponse
 }

@@ -16,6 +16,9 @@ import com.bumptech.glide.request.transition.Transition
 import com.project.imagesearchingadvancedapplication.R
 import com.project.imagesearchingadvancedapplication.data.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.ImageRecyclerItemBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class ImageRvAdapter(private val clickListener: ClickListener): ListAdapter<ImageData, ImageRvAdapter.ImageViewHolder>(
@@ -39,7 +42,8 @@ class ImageRvAdapter(private val clickListener: ClickListener): ListAdapter<Imag
                 .load(item.imageUrl)
                 .into(binding.image)
             with(binding) {
-                fromText.text = item.from
+                //TODO: 질문1) 어떻게 resource에 접근하여 string을 가져올까?
+                fromText.text = "[${item.category.name}] ${item.from}"
                 timeText.text = item.time
                 favorite.visibility = if(item.isLiked) View.VISIBLE
                                     else View.INVISIBLE
