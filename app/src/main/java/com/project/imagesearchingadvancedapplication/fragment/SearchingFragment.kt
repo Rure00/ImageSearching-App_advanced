@@ -63,32 +63,11 @@ class SearchingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchingBinding.inflate(inflater, container, false)
-        Log.d("SearchingFragment", "onCreateView")
-
-
         return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("SearchingFragment", "Resume: image size: ${imageRvAdapter.currentList.filter { it.isLiked }.size}")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("SearchingFragment", "Pause: image size: ${imageRvAdapter.currentList.filter { it.isLiked }.size}")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("SearchingFragment", "OnStop: image size: ${imageRvAdapter.currentList.filter { it.isLiked }.size}")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        Log.d("SearchingFragment", "OnViewCreated: image size: ${imageRvAdapter.currentList.filter { it.isLiked }.size}")
-
 
         binding.imageRecyclerView.apply {
             layoutManager = GridLayoutManager(context, 2) //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -118,6 +97,9 @@ class SearchingFragment : Fragment() {
         binding.searchEditText.setText(lastQuery)
         if (lastQuery.isNotBlank() && imageList.isEmpty()) startSearch(lastQuery)
 
+        binding.floatingBtn.setOnClickListener {
+            binding.imageRecyclerView.smoothScrollToPosition(0)
+        }
 
         binding.searchEditText.setOnKeyListener { _, keyCode, event ->
             if((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {

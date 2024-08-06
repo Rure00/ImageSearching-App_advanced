@@ -83,4 +83,6 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx.v240)
 
     implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    implementation("androidx.paging:paging-runtime:3.3.1")
 }
