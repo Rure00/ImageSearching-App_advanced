@@ -16,6 +16,7 @@ class MainViewModel(): ViewModel() {
 
     val likedImagesLiveData = MutableLiveData(mutableListOf<ImageData>())
 
+    //TODO: UseCase 만들고 적용해보기
     suspend fun getImages(query: String): List<ImageData>
         = retrofitController.getImages(query)
 

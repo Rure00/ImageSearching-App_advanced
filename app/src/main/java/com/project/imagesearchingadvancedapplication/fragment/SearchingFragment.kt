@@ -147,10 +147,15 @@ class SearchingFragment : Fragment() {
         Log.d("searchingFragment", "search. exist: ${imageList.size}")
 
         CoroutineScope(Dispatchers.IO).launch {
-            val result = viewModel.getImages(query)
-            Log.d("SearchingFragment", "result: ${result.size}")
+            val imageResult = viewModel.getImages(query)
+            val videoResult = viewModel.getVideos(query)
+
+            val sum = (imageResult + videoResult).sortedByDescending {
+                it.time
+            }
+
             imageList.clear()
-            imageList.addAll(result)
+            imageList.addAll(sum)
 
             withContext(Dispatchers.Main) {
                 imageRvAdapter.submitList(imageList)

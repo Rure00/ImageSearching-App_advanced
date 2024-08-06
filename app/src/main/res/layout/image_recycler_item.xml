@@ -50,6 +50,9 @@
         android:text="Daum카페"
         android:textSize="18sp"
         android:textStyle="bold"
+
+        android:maxLines="2"
+        android:ellipsize="end"
         />
     <TextView
         android:id="@+id/time_text"
@@ -62,7 +65,7 @@
         android:layout_marginTop="5dp"
 
         android:text="2024-01-21 22:50:57"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         />
 
