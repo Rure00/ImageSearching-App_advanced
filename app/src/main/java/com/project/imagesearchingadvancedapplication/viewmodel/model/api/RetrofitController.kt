@@ -11,7 +11,8 @@ class RetrofitController {
             ImageData(
                 imageUrl = it.image_url,
                 from = it.display_sitename,
-                time = it.datetime
+                time = it.datetime,
+                category = ImageData.Category.Image
             )
         }
 
@@ -20,7 +21,8 @@ class RetrofitController {
         ImageData(
             imageUrl = it.thumbnail,
             from = "[${it.author}] ${it.title}",
-            time = it.datetime
+            time = it.datetime,
+            category = ImageData.Category.Video
         )
     }
 }
