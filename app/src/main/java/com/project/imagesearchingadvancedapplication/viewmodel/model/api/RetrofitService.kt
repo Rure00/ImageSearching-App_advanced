@@ -10,14 +10,14 @@ interface RetrofitService {
     @GET("search/image")
     suspend fun getImages(
         @Query("query") query: String,
-        @Query("size") size: Int = 80,
-        @Query("page") page: Int = 1
+        @Query("page") page: Int,
+        @Query("size") size: Int = 30,
     ): ImageSearchResponse
 
     @GET("search/vclip")
     suspend fun getVideos(
         @Query("query") query: String,
-        @Query("size") size: Int = 15,
-        @Query("page") page: Int = 1
+        @Query("page") page: Int,
+        @Query("size") size: Int = 30,
     ): VideoSearchResponse
 }

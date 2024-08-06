@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.project.imagesearchingadvancedapplication.MainActivity
@@ -41,6 +42,8 @@ class SearchingFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider(requireActivity(), MainViewModelFactory())[MainViewModel::class.java]
     }
+    private var page = 1
+    private var lastQuery = ""
 
     private val imageList = mutableListOf<ImageData>()
     private val imageRvAdapter = ImageRvAdapter(object: ImageRvAdapter.ClickListener {
@@ -69,31 +72,41 @@ class SearchingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.imageRecyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2) //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-            adapter = imageRvAdapter
-            addItemDecoration(object: ItemDecoration() {
-                val px = 10
-                val spanCount = 2
+        with(binding.imageRecyclerView) {
+            addOnScrollListener(object: OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
 
-                override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                    val index = parent.getChildLayoutPosition(view)
-                    val isLeft = (index % spanCount == 0)
-                    outRect.set(
-                        if (isLeft) px else px/2,
-                        0,
-                        if (isLeft) px/2 else px,
-                        px
-                    )
+                    if(!canScrollVertically(1)) startSearch(lastQuery)
                 }
             })
+
+            apply {
+                layoutManager = GridLayoutManager(context, 2) //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                adapter = imageRvAdapter
+                addItemDecoration(object: ItemDecoration() {
+                    val px = 10
+                    val spanCount = 2
+
+                    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                        val index = parent.getChildLayoutPosition(view)
+                        val isLeft = (index % spanCount == 0)
+                        outRect.set(
+                            if (isLeft) px else px/2,
+                            0,
+                            if (isLeft) px/2 else px,
+                            px
+                        )
+                    }
+                })
+            }
         }
 
         viewModel.likedImagesLiveData.observe(viewLifecycleOwner) {
             Log.d("SearchFragment", "LiveData is changed: ${viewModel.likedImagesLiveData.value!!.size}")
         }
 
-        val lastQuery = viewModel.getLastQuery(requireActivity())
+        lastQuery = viewModel.getLastQuery(requireActivity())
         binding.searchEditText.setText(lastQuery)
         if (lastQuery.isNotBlank() && imageList.isEmpty()) startSearch(lastQuery)
 
@@ -106,8 +119,8 @@ class SearchingFragment : Fragment() {
                 val imm = requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
 
-                val query = binding.searchEditText.text.toString()
-                startSearch(query)
+                lastQuery = binding.searchEditText.text.toString()
+                startSearch(lastQuery)
             }
 
             true
@@ -116,8 +129,8 @@ class SearchingFragment : Fragment() {
             val imm = requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
 
-            val query = binding.searchEditText.text.toString()
-            startSearch(query)
+            lastQuery = binding.searchEditText.text.toString()
+            startSearch(lastQuery)
         }
     }
 
@@ -129,18 +142,17 @@ class SearchingFragment : Fragment() {
         Log.d("searchingFragment", "search. exist: ${imageList.size}")
 
         CoroutineScope(Dispatchers.IO).launch {
-            val imageResult = viewModel.getImages(query)
-            val videoResult = viewModel.getVideos(query)
+            val imageResult = viewModel.getImages(query, page)
+            val videoResult = viewModel.getVideos(query, page)
 
             val sum = (imageResult + videoResult).sortedByDescending {
                 it.time
             }
-
-            imageList.clear()
             imageList.addAll(sum)
 
             withContext(Dispatchers.Main) {
-                imageRvAdapter.submitList(imageList)
+                page++
+                imageRvAdapter.submitList(imageList.toList())
             }
         }
     }

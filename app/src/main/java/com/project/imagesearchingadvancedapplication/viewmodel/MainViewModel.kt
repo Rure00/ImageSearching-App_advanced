@@ -17,11 +17,11 @@ class MainViewModel(): ViewModel() {
     val likedImagesLiveData = MutableLiveData(mutableListOf<ImageData>())
 
     //TODO: UseCase 만들고 적용해보기
-    suspend fun getImages(query: String): List<ImageData>
-        = retrofitController.getImages(query)
+    suspend fun getImages(query: String, page: Int): List<ImageData>
+        = retrofitController.getImages(query, page)
 
-    suspend fun getVideos(query: String): List<ImageData>
-        = retrofitController.getVideos(query)
+    suspend fun getVideos(query: String, page: Int): List<ImageData>
+        = retrofitController.getVideos(query, page)
 
     fun getLastQuery(activity: Activity): String {
         val pref = SharedPreferenceUtils(activity)
