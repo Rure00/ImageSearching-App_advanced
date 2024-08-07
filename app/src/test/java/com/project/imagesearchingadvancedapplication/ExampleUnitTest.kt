@@ -17,12 +17,4 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @Test
-    fun getVideosTest() = runTest {
-        val retrofit = RetrofitController()
-        val result = retrofit.getVideos("Ive")
-        println("result: ${result.size}")
-    }
 }
