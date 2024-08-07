@@ -1,6 +1,6 @@
-package com.project.imagesearchingadvancedapplication.data.model
+package com.project.imagesearchingadvancedapplication.data.entity
 
-data class VideoSearchResponse(
+data class VideoSearchEntity(
     val meta: Meta,
     val documents: List<Document>
 ) {

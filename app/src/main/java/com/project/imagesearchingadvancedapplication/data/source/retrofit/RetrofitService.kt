@@ -1,6 +1,6 @@
-package com.project.imagesearchingadvancedapplication.data.api
+package com.project.imagesearchingadvancedapplication.data.source.retrofit
 
-import com.project.imagesearchingadvancedapplication.data.api.dto.ImageSearchResponse
+import com.project.imagesearchingadvancedapplication.data.source.retrofit.dto.ImageSearchResponse
 import com.project.imagesearchingadvancedapplication.data.api.dto.VideoSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Query

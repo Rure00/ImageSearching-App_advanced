@@ -1,7 +1,6 @@
 package com.project.imagesearchingadvancedapplication.data.source
 
-import com.project.imagesearchingadvancedapplication.data.api.RetrofitClient
-import com.project.imagesearchingadvancedapplication.data.api.RetrofitService
+import com.project.imagesearchingadvancedapplication.data.source.retrofit.RetrofitService
 import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.data.api.dto
+package com.project.imagesearchingadvancedapplication.data.source.retrofit.dto
 
 data class ImageSearchResponse(
     val meta: Meta,

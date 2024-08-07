@@ -4,7 +4,6 @@ import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.imagesearchingadvancedapplication.domain.model.ImageData
-import com.project.imagesearchingadvancedapplication.data.SharedPreferenceUtils
 import com.project.imagesearchingadvancedapplication.data.api.RetrofitController
 
 

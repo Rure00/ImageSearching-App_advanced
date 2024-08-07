@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.data.api
+package com.project.imagesearchingadvancedapplication.data.source.retrofit
 
 import com.google.gson.GsonBuilder
 import com.project.imagesearchingadvancedapplication.BuildConfig

@@ -1,7 +1,7 @@
 package com.project.imagesearchingadvancedapplication.ui.di
 
-import com.project.imagesearchingadvancedapplication.data.api.RetrofitClient
-import com.project.imagesearchingadvancedapplication.data.api.RetrofitService
+import com.project.imagesearchingadvancedapplication.data.source.retrofit.RetrofitClient
+import com.project.imagesearchingadvancedapplication.data.source.retrofit.RetrofitService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
