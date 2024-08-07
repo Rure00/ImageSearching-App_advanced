@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/searchImageFragment"
-        android:name="com.project.imagesearchingadvancedapplication.fragment.SearchingFragment"
+        android:name="com.project.imagesearchingadvancedapplication.ui.fragment.SearchingFragment"
         android:label="fragment_image_search"
         tools:layout="@layout/fragment_searching" >
 
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/myArchiveFragment"
-        android:name="com.project.imagesearchingadvancedapplication.fragment.MyArchiveFragment"
+        android:name="com.project.imagesearchingadvancedapplication.ui.fragment.MyArchiveFragment"
         android:label="fragment_my_archive"
         tools:layout="@layout/fragment_my_archive" >
 

@@ -1,10 +1,10 @@
-package com.project.imagesearchingadvancedapplication.viewmodel.model
+package com.project.imagesearchingadvancedapplication.data
 
 import android.app.Activity
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.project.imagesearchingadvancedapplication.data.ImageData
+import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 
 
 class SharedPreferenceUtils(activity: Activity) {

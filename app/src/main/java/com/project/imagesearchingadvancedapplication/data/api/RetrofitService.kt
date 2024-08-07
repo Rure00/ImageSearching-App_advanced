@@ -1,7 +1,7 @@
-package com.project.imagesearchingadvancedapplication.viewmodel.model.api
+package com.project.imagesearchingadvancedapplication.data.api
 
-import com.project.imagesearchingadvancedapplication.viewmodel.model.api.dto.ImageSearchResponse
-import com.project.imagesearchingadvancedapplication.viewmodel.model.api.dto.VideoSearchResponse
+import com.project.imagesearchingadvancedapplication.data.api.dto.ImageSearchResponse
+import com.project.imagesearchingadvancedapplication.data.api.dto.VideoSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication
+package com.project.imagesearchingadvancedapplication.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -7,17 +7,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.project.imagesearchingadvancedapplication.R
 import com.project.imagesearchingadvancedapplication.databinding.ActivityMainBinding
-import com.project.imagesearchingadvancedapplication.fragment.MyArchiveFragment
-import com.project.imagesearchingadvancedapplication.fragment.SearchingFragment
-import com.project.imagesearchingadvancedapplication.viewmodel.MainViewModel
-import com.project.imagesearchingadvancedapplication.viewmodel.factory.MainViewModelFactory
-import kotlinx.coroutines.flow.forEach
+import com.project.imagesearchingadvancedapplication.ui.fragment.MyArchiveFragment
+import com.project.imagesearchingadvancedapplication.ui.fragment.SearchingFragment
+import com.project.imagesearchingadvancedapplication.ui.viewmodel.MainViewModel
+import com.project.imagesearchingadvancedapplication.ui.viewmodel.factory.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {

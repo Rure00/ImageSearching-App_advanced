@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.viewmodel.model.api
+package com.project.imagesearchingadvancedapplication.data.api
 
 import com.google.gson.GsonBuilder
 import com.project.imagesearchingadvancedapplication.BuildConfig

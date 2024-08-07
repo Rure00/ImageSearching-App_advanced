@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.fragment
+package com.project.imagesearchingadvancedapplication.ui.fragment
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Rect
@@ -10,27 +10,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.google.android.material.snackbar.Snackbar
-import com.project.imagesearchingadvancedapplication.MainActivity
 import com.project.imagesearchingadvancedapplication.add
-import com.project.imagesearchingadvancedapplication.addAll
-import com.project.imagesearchingadvancedapplication.data.ImageData
+import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.FragmentSearchingBinding
-import com.project.imagesearchingadvancedapplication.viewmodel.model.SharedPreferenceUtils
-import com.project.imagesearchingadvancedapplication.viewmodel.model.api.RetrofitController
-import com.project.imagesearchingadvancedapplication.recycler_view.ImageRvAdapter
+import com.project.imagesearchingadvancedapplication.ui.recycler_view.ImageRvAdapter
 import com.project.imagesearchingadvancedapplication.remove
-import com.project.imagesearchingadvancedapplication.viewmodel.MainViewModel
-import com.project.imagesearchingadvancedapplication.viewmodel.factory.MainViewModelFactory
+import com.project.imagesearchingadvancedapplication.ui.viewmodel.MainViewModel
+import com.project.imagesearchingadvancedapplication.ui.viewmodel.factory.MainViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

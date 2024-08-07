@@ -1,6 +1,6 @@
-package com.project.imagesearchingadvancedapplication.viewmodel.model.api
+package com.project.imagesearchingadvancedapplication.data.api
 
-import com.project.imagesearchingadvancedapplication.data.ImageData
+import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 
 
 class RetrofitController {

@@ -1,8 +1,5 @@
 package com.project.imagesearchingadvancedapplication
 
-import com.project.imagesearchingadvancedapplication.viewmodel.model.api.RetrofitController
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
 import org.junit.Assert.*

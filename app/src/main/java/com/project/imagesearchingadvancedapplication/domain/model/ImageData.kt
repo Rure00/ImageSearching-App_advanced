@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.data
+package com.project.imagesearchingadvancedapplication.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

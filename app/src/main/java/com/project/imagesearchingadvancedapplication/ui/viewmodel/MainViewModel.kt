@@ -1,13 +1,11 @@
-package com.project.imagesearchingadvancedapplication.viewmodel
+package com.project.imagesearchingadvancedapplication.ui.viewmodel
 
 import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.CreationExtras
-import com.project.imagesearchingadvancedapplication.data.ImageData
-import com.project.imagesearchingadvancedapplication.viewmodel.model.SharedPreferenceUtils
-import com.project.imagesearchingadvancedapplication.viewmodel.model.api.RetrofitController
+import com.project.imagesearchingadvancedapplication.domain.model.ImageData
+import com.project.imagesearchingadvancedapplication.data.SharedPreferenceUtils
+import com.project.imagesearchingadvancedapplication.data.api.RetrofitController
 
 
 class MainViewModel(): ViewModel() {

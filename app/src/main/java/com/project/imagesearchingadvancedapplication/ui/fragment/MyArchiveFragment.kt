@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.fragment
+package com.project.imagesearchingadvancedapplication.ui.fragment
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -7,20 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import com.project.imagesearchingadvancedapplication.MainActivity
-import com.project.imagesearchingadvancedapplication.add
-import com.project.imagesearchingadvancedapplication.addAll
-import com.project.imagesearchingadvancedapplication.data.ImageData
+import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.FragmentMyArchiveBinding
-import com.project.imagesearchingadvancedapplication.recycler_view.ImageRvAdapter
+import com.project.imagesearchingadvancedapplication.ui.recycler_view.ImageRvAdapter
 import com.project.imagesearchingadvancedapplication.remove
-import com.project.imagesearchingadvancedapplication.viewmodel.MainViewModel
-import com.project.imagesearchingadvancedapplication.viewmodel.factory.MainViewModelFactory
+import com.project.imagesearchingadvancedapplication.ui.viewmodel.MainViewModel
+import com.project.imagesearchingadvancedapplication.ui.viewmodel.factory.MainViewModelFactory
 
 class MyArchiveFragment : Fragment() {
     private var _binding: FragmentMyArchiveBinding? = null
