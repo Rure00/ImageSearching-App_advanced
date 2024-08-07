@@ -7,7 +7,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
 
-    id("com.google.dagger.hilt.android") version "2.44" apply false
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -62,6 +62,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -86,6 +90,6 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 }

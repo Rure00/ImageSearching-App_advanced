@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.project.imagesearchingadvancedapplication.R
 import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.ImageRecyclerItemBinding
-import com.project.imagesearchingadvancedapplication.recycler_view.GlideApp
 
 
 class ImageRvAdapter(private val clickListener: ClickListener): ListAdapter<ImageData, ImageRvAdapter.ImageViewHolder>(
