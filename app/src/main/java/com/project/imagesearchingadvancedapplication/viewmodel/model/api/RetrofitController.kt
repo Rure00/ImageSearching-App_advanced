@@ -6,8 +6,8 @@ import com.project.imagesearchingadvancedapplication.data.ImageData
 class RetrofitController {
     private val client = RetrofitClient.getInstance().create(RetrofitService::class.java)
 
-    suspend fun getImages(query: String): List<ImageData>
-    = client.getImages(query).documents.map {
+    suspend fun getImages(query: String, page: Int): List<ImageData>
+    = client.getImages(query, page).documents.map {
         val time = it.datetime.split(".")[0].split("T")
             .joinToString(" ")
 
@@ -19,8 +19,8 @@ class RetrofitController {
             )
         }
 
-    suspend fun getVideos(query: String): List<ImageData>
-    = client.getVideos(query).documents.map {
+    suspend fun getVideos(query: String, page: Int): List<ImageData>
+    = client.getVideos(query, page).documents.map {
         val time = it.datetime.split(".")[0].split("T")
             .joinToString(" ")
 
