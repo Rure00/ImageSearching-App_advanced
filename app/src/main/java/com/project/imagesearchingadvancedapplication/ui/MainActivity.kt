@@ -16,7 +16,9 @@ import com.project.imagesearchingadvancedapplication.ui.fragment.MyArchiveFragme
 import com.project.imagesearchingadvancedapplication.ui.fragment.SearchingFragment
 import com.project.imagesearchingadvancedapplication.ui.viewmodel.MainViewModel
 import com.project.imagesearchingadvancedapplication.ui.viewmodel.factory.MainViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)

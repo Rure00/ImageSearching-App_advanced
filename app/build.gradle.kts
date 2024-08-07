@@ -6,6 +6,8 @@ plugins {
 
     id("kotlin-parcelize")
     id("kotlin-kapt")
+
+    id("com.google.dagger.hilt.android") version "2.44" apply false
 }
 
 android {
@@ -84,5 +86,6 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
-    implementation("androidx.paging:paging-runtime:3.3.1")
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 }
