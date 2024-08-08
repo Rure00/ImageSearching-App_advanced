@@ -20,8 +20,8 @@ class MainViewModel @Inject constructor(
 
     val likedImagesLiveData = MutableLiveData(mutableListOf<ImageData>())
 
-    suspend fun getImageData(query: String): List<ImageData>
-        = getImageDataUseCase.invoke(query)
+    suspend fun getImageData(query: String, page: Int): List<ImageData>
+        = getImageDataUseCase.invoke(query, page)
 
     fun getLastQuery(): String
         = getLastQueryUseCase.invoke()

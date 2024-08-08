@@ -7,9 +7,10 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class LocalDataSource @Inject constructor(@ActivityContext context: Context) {
+class LocalDataSource @Inject constructor(@ApplicationContext context: Context) {
     companion object {
         private const val APP_SHARED_PREFS = "image_search"
         const val LIKED_IMAGES_TAG = "liked_image_tag"

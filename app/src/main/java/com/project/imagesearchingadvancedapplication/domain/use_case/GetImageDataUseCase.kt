@@ -7,8 +7,7 @@ import javax.inject.Inject
 class GetImageDataUseCase @Inject constructor(
     private val appRepository: AppRepository
 ) {
-    private val size = 30
-    suspend operator fun invoke(query: String): List<ImageData> {
-        return appRepository.getImageData(query, size)
+    suspend operator fun invoke(query: String, page: Int): List<ImageData> {
+        return appRepository.getImageData(query, page)
     }
 }

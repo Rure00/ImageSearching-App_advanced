@@ -15,7 +15,6 @@ import com.project.imagesearchingadvancedapplication.databinding.ActivityMainBin
 import com.project.imagesearchingadvancedapplication.presentation.fragment.MyArchiveFragment
 import com.project.imagesearchingadvancedapplication.presentation.fragment.SearchingFragment
 import com.project.imagesearchingadvancedapplication.presentation.viewmodel.MainViewModel
-import com.project.imagesearchingadvancedapplication.presentation.viewmodel.factory.MainViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,9 +25,6 @@ class MainActivity : AppCompatActivity() {
     private val navController: NavController by lazy {
         val hostFragment =  supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         hostFragment.navController
-    }
-    private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

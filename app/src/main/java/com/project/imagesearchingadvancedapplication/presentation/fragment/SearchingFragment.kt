@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,15 +22,17 @@ import com.project.imagesearchingadvancedapplication.databinding.FragmentSearchi
 import com.project.imagesearchingadvancedapplication.presentation.recycler_view.ImageRvAdapter
 import com.project.imagesearchingadvancedapplication.remove
 import com.project.imagesearchingadvancedapplication.presentation.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@AndroidEntryPoint
 class SearchingFragment : Fragment() {
     private var _binding: FragmentSearchingBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by activityViewModels<MainViewModel>()
 
     private var page = 1
     private var lastQuery = ""
@@ -95,7 +98,7 @@ class SearchingFragment : Fragment() {
             Log.d("SearchFragment", "LiveData is changed: ${viewModel.likedImagesLiveData.value!!.size}")
         }
 
-        lastQuery = viewModel.getLastQuery(requireActivity())
+        lastQuery = viewModel.getLastQuery()
         binding.searchEditText.setText(lastQuery)
         if (lastQuery.isNotBlank() && imageList.isEmpty()) startSearch(lastQuery)
 
@@ -126,18 +129,16 @@ class SearchingFragment : Fragment() {
 
 
     private fun startSearch(query: String) {
-        viewModel.saveLastQuery(requireActivity(), query)
+        viewModel.saveLastQuery(query)
 
         Log.d("searchingFragment", "search. exist: ${imageList.size}")
 
         CoroutineScope(Dispatchers.IO).launch {
-            val imageResult = viewModel.getImages(query, page)
-            val videoResult = viewModel.getVideos(query, page)
-
-            val sum = (imageResult + videoResult).sortedByDescending {
+            val result = viewModel.getImageData(query, page).sortedByDescending {
                 it.time
             }
-            imageList.addAll(sum)
+
+            imageList.addAll(result)
 
             withContext(Dispatchers.Main) {
                 page++
