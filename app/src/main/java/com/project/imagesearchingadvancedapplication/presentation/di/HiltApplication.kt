@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.ui.di
+package com.project.imagesearchingadvancedapplication.presentation.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

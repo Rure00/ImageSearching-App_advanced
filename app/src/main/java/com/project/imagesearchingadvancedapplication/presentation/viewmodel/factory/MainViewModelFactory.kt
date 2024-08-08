@@ -1,9 +1,9 @@
-package com.project.imagesearchingadvancedapplication.ui.viewmodel.factory
+package com.project.imagesearchingadvancedapplication.presentation.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.project.imagesearchingadvancedapplication.ui.viewmodel.MainViewModel
+import com.project.imagesearchingadvancedapplication.presentation.viewmodel.MainViewModel
 
 class MainViewModelFactory: ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")

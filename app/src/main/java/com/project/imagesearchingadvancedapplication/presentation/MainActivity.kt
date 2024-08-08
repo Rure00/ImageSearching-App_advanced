@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.ui
+package com.project.imagesearchingadvancedapplication.presentation
 
 import android.os.Bundle
 import android.util.Log
@@ -12,10 +12,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.project.imagesearchingadvancedapplication.R
 import com.project.imagesearchingadvancedapplication.databinding.ActivityMainBinding
-import com.project.imagesearchingadvancedapplication.ui.fragment.MyArchiveFragment
-import com.project.imagesearchingadvancedapplication.ui.fragment.SearchingFragment
-import com.project.imagesearchingadvancedapplication.ui.viewmodel.MainViewModel
-import com.project.imagesearchingadvancedapplication.ui.viewmodel.factory.MainViewModelFactory
+import com.project.imagesearchingadvancedapplication.presentation.fragment.MyArchiveFragment
+import com.project.imagesearchingadvancedapplication.presentation.fragment.SearchingFragment
+import com.project.imagesearchingadvancedapplication.presentation.viewmodel.MainViewModel
+import com.project.imagesearchingadvancedapplication.presentation.viewmodel.factory.MainViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

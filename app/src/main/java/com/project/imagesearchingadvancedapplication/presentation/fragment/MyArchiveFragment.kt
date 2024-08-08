@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.ui.fragment
+package com.project.imagesearchingadvancedapplication.presentation.fragment
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -7,23 +7,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.FragmentMyArchiveBinding
-import com.project.imagesearchingadvancedapplication.ui.recycler_view.ImageRvAdapter
+import com.project.imagesearchingadvancedapplication.presentation.recycler_view.ImageRvAdapter
 import com.project.imagesearchingadvancedapplication.remove
-import com.project.imagesearchingadvancedapplication.ui.viewmodel.MainViewModel
-import com.project.imagesearchingadvancedapplication.ui.viewmodel.factory.MainViewModelFactory
+import com.project.imagesearchingadvancedapplication.presentation.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyArchiveFragment : Fragment() {
     private var _binding: FragmentMyArchiveBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by lazy {
-        ViewModelProvider(requireActivity(), MainViewModelFactory())[MainViewModel::class.java]
-    }
+    private val viewModel: MainViewModel by viewModels()
     private val imageRvAdapter by lazy {
         ImageRvAdapter(object: ImageRvAdapter.ClickListener {
                 override fun onImageClick(imageData: ImageData) {

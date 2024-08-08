@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.ui.recycler_view
+package com.project.imagesearchingadvancedapplication.presentation.recycler_view
 
 import android.view.LayoutInflater
 import android.view.View

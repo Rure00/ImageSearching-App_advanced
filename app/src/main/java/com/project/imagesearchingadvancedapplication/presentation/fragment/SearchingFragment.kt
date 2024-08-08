@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.ui.fragment
+package com.project.imagesearchingadvancedapplication.presentation.fragment
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Rect
@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
@@ -18,10 +18,9 @@ import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.project.imagesearchingadvancedapplication.add
 import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.FragmentSearchingBinding
-import com.project.imagesearchingadvancedapplication.ui.recycler_view.ImageRvAdapter
+import com.project.imagesearchingadvancedapplication.presentation.recycler_view.ImageRvAdapter
 import com.project.imagesearchingadvancedapplication.remove
-import com.project.imagesearchingadvancedapplication.ui.viewmodel.MainViewModel
-import com.project.imagesearchingadvancedapplication.ui.viewmodel.factory.MainViewModelFactory
+import com.project.imagesearchingadvancedapplication.presentation.viewmodel.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,9 +29,8 @@ import kotlinx.coroutines.withContext
 class SearchingFragment : Fragment() {
     private var _binding: FragmentSearchingBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by lazy {
-        ViewModelProvider(requireActivity(), MainViewModelFactory())[MainViewModel::class.java]
-    }
+    private val viewModel: MainViewModel by viewModels()
+
     private var page = 1
     private var lastQuery = ""
 

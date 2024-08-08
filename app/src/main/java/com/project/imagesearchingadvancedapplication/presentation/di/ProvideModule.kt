@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication.ui.di
+package com.project.imagesearchingadvancedapplication.presentation.di
 
 import com.project.imagesearchingadvancedapplication.data.source.retrofit.RetrofitClient
 import com.project.imagesearchingadvancedapplication.data.source.retrofit.RetrofitService
@@ -6,7 +6,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
