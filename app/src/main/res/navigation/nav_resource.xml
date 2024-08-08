@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_resource"
+    app:startDestination="@id/searchImageFragment"
+    >
+
+    <fragment
+        android:id="@+id/searchImageFragment"
+        android:name="com.project.imagesearchingadvancedapplication.presentation.fragment.SearchingFragment"
+        android:label="fragment_image_search"
+        tools:layout="@layout/fragment_searching" >
+
+        <action
+            android:id="@+id/action_searchImageFragment_to_myArchiveFragment"
+            app:popUpTo="@id/searchImageFragment"
+            app:destination="@id/myArchiveFragment"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myArchiveFragment"
+        android:name="com.project.imagesearchingadvancedapplication.presentation.fragment.MyArchiveFragment"
+        android:label="fragment_my_archive"
+        tools:layout="@layout/fragment_my_archive" >
+
+    </fragment>
+
+
+</navigation>
