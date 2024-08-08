@@ -27,4 +27,10 @@ class AppRepositoryImpl @Inject constructor(
     override fun saveLastQuery(query: String) {
         localDataSource.saveQuery(query)
     }
+
+    override fun getImageFromLocal(): List<ImageData>
+        = localDataSource.getImages()
+
+
+
 }

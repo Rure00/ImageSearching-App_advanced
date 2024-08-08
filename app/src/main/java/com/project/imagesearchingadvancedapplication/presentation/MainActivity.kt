@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         val hostFragment =  supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         hostFragment.navController
     }
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +43,16 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        viewModel.getImagesFromLocal()
         setBottomNav()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        Log.d("MainActivity", "Save ${viewModel.likedImagesLiveData.value?.size}'s images.")
+
+        viewModel.saveImages()
     }
 
     private fun setBottomNav() {
@@ -52,9 +63,6 @@ class MainActivity : AppCompatActivity() {
                     .findFragmentById(R.id.nav_host_fragment_container)!!
                     .childFragmentManager
                     .fragments[0]
-
-                Log.d("Navigation", "backStack: ${navController.currentBackStack.value.size}")
-
 
                 when(item.itemId) {
                     R.id.navigation_search_img -> {

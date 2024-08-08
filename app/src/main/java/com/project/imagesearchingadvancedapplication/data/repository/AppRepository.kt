@@ -9,4 +9,5 @@ interface AppRepository {
     fun saveImageData(list: List<ImageData>)
     fun getLastQuery(): String
     fun saveLastQuery(query: String)
+    fun getImageFromLocal(): List<ImageData>
 }
