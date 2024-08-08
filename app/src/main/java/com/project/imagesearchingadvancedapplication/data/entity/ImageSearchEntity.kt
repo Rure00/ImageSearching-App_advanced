@@ -1,6 +1,6 @@
-package com.project.imagesearchingadvancedapplication.viewmodel.model.api.dto
+package com.project.imagesearchingadvancedapplication.data.entity
 
-data class ImageSearchResponse(
+data class ImageSearchEntity(
     val meta: Meta,
     val documents: ArrayList<Document>
 ) {

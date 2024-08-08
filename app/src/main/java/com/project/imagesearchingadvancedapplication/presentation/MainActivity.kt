@@ -1,4 +1,4 @@
-package com.project.imagesearchingadvancedapplication
+package com.project.imagesearchingadvancedapplication.presentation
 
 import android.os.Bundle
 import android.util.Log
@@ -7,18 +7,17 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.project.imagesearchingadvancedapplication.R
 import com.project.imagesearchingadvancedapplication.databinding.ActivityMainBinding
-import com.project.imagesearchingadvancedapplication.fragment.MyArchiveFragment
-import com.project.imagesearchingadvancedapplication.fragment.SearchingFragment
-import com.project.imagesearchingadvancedapplication.viewmodel.MainViewModel
-import com.project.imagesearchingadvancedapplication.viewmodel.factory.MainViewModelFactory
-import kotlinx.coroutines.flow.forEach
+import com.project.imagesearchingadvancedapplication.presentation.fragment.MyArchiveFragment
+import com.project.imagesearchingadvancedapplication.presentation.fragment.SearchingFragment
+import com.project.imagesearchingadvancedapplication.presentation.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -26,9 +25,6 @@ class MainActivity : AppCompatActivity() {
     private val navController: NavController by lazy {
         val hostFragment =  supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         hostFragment.navController
-    }
-    private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,22 +1,23 @@
-package com.project.imagesearchingadvancedapplication.viewmodel.model
+package com.project.imagesearchingadvancedapplication.data.source
 
 import android.app.Activity
+import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.project.imagesearchingadvancedapplication.data.ImageData
+import com.project.imagesearchingadvancedapplication.domain.model.ImageData
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-
-class SharedPreferenceUtils(activity: Activity) {
-
+class LocalDataSource @Inject constructor(@ApplicationContext context: Context) {
     companion object {
         private const val APP_SHARED_PREFS = "image_search"
         const val LIKED_IMAGES_TAG = "liked_image_tag"
         const val LAST_QUERY = "last_query"
     }
 
-    private val sharedPreferences: SharedPreferences =
-        activity.getPreferences(Activity.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences = context.getSharedPreferences(APP_SHARED_PREFS, Activity.MODE_PRIVATE)
     private val editor = sharedPreferences.edit()
 
     fun saveQuery(query: String) {

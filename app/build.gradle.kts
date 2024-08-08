@@ -4,8 +4,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
 
+
+    kotlin("plugin.serialization") version "1.5.0"
+
     id("kotlin-parcelize")
     id("kotlin-kapt")
+
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -60,6 +65,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -84,5 +93,6 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
-    implementation("androidx.paging:paging-runtime:3.3.1")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 }
