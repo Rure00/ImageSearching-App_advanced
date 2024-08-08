@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.project.imagesearchingadvancedapplication.add
 import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.FragmentSearchingBinding
@@ -74,7 +75,7 @@ class SearchingFragment : Fragment() {
             })
 
             apply {
-                layoutManager = GridLayoutManager(context, 2) //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL) //GridLayoutManager(context, 2)
                 adapter = imageRvAdapter
                 addItemDecoration(object: ItemDecoration() {
                     val px = 10

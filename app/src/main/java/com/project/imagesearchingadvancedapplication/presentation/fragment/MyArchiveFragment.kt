@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.project.imagesearchingadvancedapplication.domain.model.ImageData
 import com.project.imagesearchingadvancedapplication.databinding.FragmentMyArchiveBinding
 import com.project.imagesearchingadvancedapplication.presentation.recycler_view.ImageRvAdapter
@@ -54,7 +55,7 @@ class MyArchiveFragment : Fragment() {
 
 
         binding.archiveRecyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = imageRvAdapter.apply {
                 submitList(viewModel.likedImagesLiveData.value)
             }
