@@ -19,6 +19,7 @@ import com.project.imagesearchingadvancedapplication.presentation.recycler_view.
 import com.project.imagesearchingadvancedapplication.remove
 import com.project.imagesearchingadvancedapplication.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.LinkedList
 
 @AndroidEntryPoint
 class MyArchiveFragment : Fragment() {
@@ -52,6 +53,7 @@ class MyArchiveFragment : Fragment() {
             imageRvAdapter.submitList(it.toList())
             Log.d("MyArchiveFragment", "LiveData is changed: ${viewModel.likedImagesLiveData.value?.size}")
         }
+
 
 
         binding.archiveRecyclerView.apply {
